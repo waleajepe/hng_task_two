@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hng_task_two/screens/display_screen.dart';
 import 'package:hng_task_two/constants.dart';
+
 class InputScreen extends StatefulWidget {
   @override
   _InputScreenState createState() => _InputScreenState();
 }
 
 class _InputScreenState extends State<InputScreen> {
-  // String firstName = '';
-  // String lastName = '';
-  // String position = '';
-  // String email = '';
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final positionController = TextEditingController();
@@ -68,8 +65,9 @@ class _InputScreenState extends State<InputScreen> {
                             child: Text(
                               'Fill Forms',
                               style: TextStyle(
-                                color: Colors.black45,
-                                  fontSize: 20.0, fontWeight: FontWeight.w700),
+                                  color: Colors.black45,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
                           Padding(
@@ -109,7 +107,7 @@ class _InputScreenState extends State<InputScreen> {
                               controller: emailController,
                               decoration: kTextFieldDecoration.copyWith(
                                 labelText: 'Email',
-                                  ),
+                              ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter some text';
@@ -122,16 +120,19 @@ class _InputScreenState extends State<InputScreen> {
                             children: [
                               Container(
                                 constraints: BoxConstraints(
-                                  maxWidth: 240.0,
+                                  maxWidth: 200.0,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0,
+                                      right: 5.0,
+                                      top: 10.0,
+                                      bottom: 10.0),
                                   child: TextFormField(
                                     controller: positionController,
 
                                     decoration: kTextFieldDecoration.copyWith(
-                                        labelText: 'Position'
-                                    ),
+                                        labelText: 'Position'),
                                     // The validator receives the text that the user has entered.
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -142,54 +143,56 @@ class _InputScreenState extends State<InputScreen> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                constraints: BoxConstraints(
-                                    maxWidth: 100.0
+                              Flexible(
+                                child: Container(
+                                  constraints: BoxConstraints(maxWidth: 90.0),
+                                  width: 100.0,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10.0, bottom: 10.0),
+                                    child: TextFormField(
+                                      controller: ageController,
+                                      keyboardType: TextInputType.number,
 
-                                ),
-                                width: 100.0,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
-                                  child: TextFormField(
-                                    controller: ageController,
-                                    keyboardType: TextInputType.number,
-
-                                    decoration: kTextFieldDecoration.copyWith(
-                                        labelText: 'Age'
+                                      decoration: kTextFieldDecoration.copyWith(
+                                          labelText: 'Age'),
+                                      // The validator receives the text that the user has entered.
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
                                     ),
-                                    // The validator receives the text that the user has entered.
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter some text';
-                                      }
-                                      return null;
-                                    },
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
                                 padding:
-                                const EdgeInsets.symmetric(vertical: 16.0),
+                                    const EdgeInsets.symmetric(vertical: 16.0),
                                 child: ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
-
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (context)=>ProfileScreen(
-                                            firstName: firstNameController.text,
-                                            lastName: lastNameController.text,
-                                            email: emailController.text,
-                                            position: positionController.text,
-                                            age: ageController.text,
-                                          ))
-                                      );
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfileScreen(
+                                                    firstName:
+                                                        firstNameController
+                                                            .text,
+                                                    lastName:
+                                                        lastNameController.text,
+                                                    email: emailController.text,
+                                                    position:
+                                                        positionController.text,
+                                                    age: ageController.text,
+                                                  )));
                                     }
                                   },
                                   child: const Text('Submit'),
@@ -198,16 +201,16 @@ class _InputScreenState extends State<InputScreen> {
                               SizedBox(width: 10.0),
                               Padding(
                                 padding:
-                                const EdgeInsets.symmetric(vertical: 16.0),
+                                    const EdgeInsets.symmetric(vertical: 16.0),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                      setState(() {
-                                        firstNameController.text = '';
-                                        lastNameController.text = '';
-                                        positionController.text = '';
-                                        emailController.text = '';
-                                        ageController.text = '';
-                                      });
+                                    setState(() {
+                                      firstNameController.text = '';
+                                      lastNameController.text = '';
+                                      positionController.text = '';
+                                      emailController.text = '';
+                                      ageController.text = '';
+                                    });
                                   },
                                   child: const Text('Clear'),
                                 ),

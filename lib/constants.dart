@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 const kTextFieldDecoration = InputDecoration(
   fillColor: Color(0xfffaf9f7),
   filled: true,
-  border: OutlineInputBorder(
-      borderSide:
-      BorderSide(color: Color(0xfffaf9f7))),
+  border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xfffaf9f7))),
   enabledBorder: OutlineInputBorder(
-    borderSide:
-    BorderSide(color: Color(0xfffaf9f7)),
+    borderSide: BorderSide(color: Color(0xfffaf9f7)),
     borderRadius: BorderRadius.all(
       Radius.circular(8.0),
     ),

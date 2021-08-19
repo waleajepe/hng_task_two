@@ -8,7 +8,7 @@ void main() {
 }
 
 class UserProfile extends StatelessWidget {
-    @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -26,4 +26,3 @@ class UserProfile extends StatelessWidget {
     );
   }
 }
-
